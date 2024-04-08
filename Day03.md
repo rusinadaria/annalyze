@@ -62,5 +62,16 @@ ORDER BY pizzeria_name;
 
 ## Ex 05
 ```sql
-
+SELECT pz.name as pizzeria_name FROM pizzeria pz
+JOIN menu m ON m.pizzeria_id = pz.id
+JOIN person_order po ON menu_id = m.id
+JOIN person p ON p.id = po.person_id
+WHERE p.name = 'Andrey'
+EXCEPT
+SELECT pz.name as pizzeria_name FROM person_visits pv
+JOIN person_order po ON po.person_id = pv.person_id
+JOIN person p ON p.id = po.person_id
+JOIN pizzeria pz ON pz.id = pv.pizzeria_id
+WHERE p.name = 'Andrey'
 ```
+![image](https://github.com/rusinadaria/sql/assets/112808317/7f7766f0-eef6-4682-aaff-fb1b52cb9f70)
