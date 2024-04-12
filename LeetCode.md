@@ -20,8 +20,17 @@ BEGIN
 	SELECT dense_rank() over (order by employee.salary desc) as rank, employee.* from employee
     ) as tab
     WHERE rank = N
-      
   );
 END;
 $$ LANGUAGE plpgsql;
+```
+## 178
+```sql
+SELECT score, dense_rank() over(order by score desc) rank FROM Scores
+```
+## 182
+```sql
+SELECT email as Email FROM Person
+GROUP BY Email
+HAVING COUNT(Email)>1
 ```
